@@ -7,12 +7,28 @@ bare keys, 20 layers instead of 24, and a projection head in place of the final 
 
 ## Install
 
-1. Copy this folder into `ComfyUI/custom_nodes/` (any folder name works).
-2. Put the `.safetensors` file in `ComfyUI/models/text_encoders/`.
-3. Restart ComfyUI.
+You need a ComfyUI recent enough to ship `comfy/text_encoders/qwen35.py`
+(July 2026 or newer). The node was tested on commits `f8a3fd9d` (2026-07-24) and
+`9fa63b0a` (2026-10-15). It has no extra Python dependencies.
 
-This needs a ComfyUI version that ships `comfy/text_encoders/qwen35.py`. It was
-tested against commits `f8a3fd9d` (2026-07-24) and `9fa63b0a` (2026-10-15).
+1. Install the node, either with git:
+
+   ```bash
+   cd ComfyUI/custom_nodes
+   git clone https://github.com/nawka12/comfyui-qwen35-anima-head
+   ```
+
+   or by downloading the ZIP from GitHub (**Code** > **Download ZIP**) and
+   extracting it into `ComfyUI/custom_nodes/`.
+
+2. Download the text encoder, `qwen_3_5_08b_anima_head_L20.safetensors`, from
+   [Civitai](https://civitai.com/models/3003960) and put it in
+   `ComfyUI/models/text_encoders/`.
+
+3. Restart ComfyUI. The node shows up as **Load Qwen3.5 Anima Text Encoder**
+   under model/loaders.
+
+To update later, run `git pull` inside `ComfyUI/custom_nodes/comfyui-qwen35-anima-head`.
 
 ## Use
 
@@ -30,3 +46,10 @@ Anima text encoder, so `(tag:1.2)` weights and `\(` escapes work as usual.
 - An empty prompt becomes a single `<|endoftext|>` token, the same convention
   as stock Anima in ComfyUI. Long prompts are not truncated (diffucore cuts at
   512 tokens).
+
+## License
+
+The node is GPL-3.0, the same as ComfyUI, which it builds on. The text encoder
+weights are licensed separately: the projection head is under the CircleStone
+Labs Non-Commercial License v1.2 and the Qwen3.5-0.8B layers are Apache-2.0. See
+the Civitai page for details.
