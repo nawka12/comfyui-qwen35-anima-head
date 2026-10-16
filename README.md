@@ -12,7 +12,7 @@ bare keys, 20 layers instead of 24, and a projection head in place of the final 
 3. Restart ComfyUI.
 
 This needs a ComfyUI version that ships `comfy/text_encoders/qwen35.py`. It was
-tested against commit `f8a3fd9d` (2026-07-24).
+tested against commits `f8a3fd9d` (2026-07-24) and `9fa63b0a` (2026-10-15).
 
 ## Use
 
